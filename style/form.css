@@ -1,5 +1,5 @@
 
-.container-login{
+.container-form{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
    
 }
 
-.login-box{
+.form-box{
     display: flex;
     gap: 5px;
     flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 
-.login-btn{
+.form-btn{
     background-color: var(--color-primary);
     color: var(--color-white);
     padding: 10px 20px;
@@ -39,7 +39,7 @@
 }
 
 
-.login-box input{
+.form-box input{
     box-sizing: border-box;
     padding: 10px;
     width: 90%;
@@ -49,7 +49,7 @@
     margin: 5px 0;
 }  
 
-.login-box h1{
+.form-box h1{
     margin: 0;
     padding: 0;
     margin-bottom: 20px;
