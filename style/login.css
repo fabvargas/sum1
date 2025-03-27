@@ -11,15 +11,15 @@
 }
 
 .login-box{
- 
     display: flex;
+    gap: 5px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--color-gray);
-    width: 40vw;
+    width: 35vw;
     min-width: 300px;
-    padding: 20px;
+    padding: 35px 20px;
     border-radius: 10px;
 
 }
@@ -32,24 +32,27 @@
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
-    margin: auto auto 10px auto;
+    margin: 10px auto;
+    font-size: 15px;
+    font-weight: 700;
   
 }
 
 
 .login-box input{
+    box-sizing: border-box;
     padding: 10px;
-    margin: 10px;
-    width: 100%;
+    width: 90%;
     border-radius: 5px;
     border: none;
     outline: none;
+    margin: 5px 0;
 }  
 
 .login-box h1{
     margin: 0;
     padding: 0;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: var(--color-primary);
 }
 

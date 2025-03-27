@@ -2,8 +2,8 @@
 :root{
 --color-black: #000;
 --color-white: #fff;
---color-primary: #007bff;
---color-gray: #454545;
+--color-primary: rgb(234, 171, 52);
+--color-gray: #1c1c1c;
 
 --font-size-small: 12px;
 --font-size-medium: 16px;
