@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style/home.css">
+    <title>Login</title>
+    <link href="style/form.css" rel="stylesheet">
+    <link href="global.css" rel="stylesheet">
+  
+
+    
+</head>
+<body>
+    <label class="btn-menu" for="menu" ></label>
+    <input type="checkbox" id="menu" class="menu-toggle" hidden />
+    <nav class="menu">
+        <ul class="menu-list">
+            <h3>Categorias</h3>
+            <li class="menu-item"><a href="index.html" class="menu-link">Home</a></li>
+            <li class="menu-item"><a href="accion.html" class="menu-link">Acción</a></li>
+            <li class="menu-item"><a href="aventura.html" class="menu-link"> Aventura</a></li>
+            <li class="menu-item"><a href="deporte.html" class="menu-link">Deportes</a></li>
+            <li class="menu-item"><a href="multijugador.html" class="menu-link">Multijugador</a></li>
+            <li class="menu-item"><a href="terror.html" class="menu-link">Terror</a></li>
+            
+        </ul>
+    </nav>
+    <div class="container-form">
+        <div class="outline"></div>
+        <img class="video-hero" src="public/video.jpeg" />
+       
+            <form class="form-box">
+                <h1 class="form-title">Change Password</h1>
+                <input id="email"  type="text" placeholder="Email" >
+                <p class="error" id="error-user"></p>
+                <input id="pass" type="text" placeholder="New Password">
+                <p class="error" id="error-pass"></p>
+                <input id="repeat" type="text" placeholder="Repeat Password">
+                <p class="error" id="error-pass"></p>
+                <button id="form-btn" class="form-btn" type="submit" >Send</button>
+                <p class="success" id="success"></p>
+            </form>        
+    </div>
+    <button class="home-button">
+        <a href="index.html">
+            <img src="public/home.svg" alt="">
+        </a>
+    </button>
+</body>
+<script src="/js/login.js"></script>
+</html>
