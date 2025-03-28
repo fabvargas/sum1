@@ -66,6 +66,7 @@
 }
 
 .hero-categories-container{
+    
     display: flex;
     width: 100%;
     justify-content: center;
@@ -73,6 +74,7 @@
 }
 
 .hero-categories {
+    margin-top: 5px;
     padding: 0;
     list-style: none;
     display: flex;
@@ -133,6 +135,8 @@
     transition: 0.3s;
 }
 
+
+
 .menu{
     list-style: none;
     position: fixed;
@@ -152,6 +156,10 @@ padding: 0 25px;
 padding-top: 40px;
   list-style: none;
    
+}
+
+.menu-title{
+    color: var(#fff);
 }
 
 
@@ -184,19 +192,21 @@ padding-top: 40px;
 /* Grid */
 
 
-.games-grid {
+/* .games-grid {
     padding: 20px;
-}
+} */
 
 .games-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    box-sizing: border-box;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+    width: 100%;
     list-style: none;
     padding: 0;
-}
+} 
 
 .game-card {
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     background-color: #1c1c1c;
