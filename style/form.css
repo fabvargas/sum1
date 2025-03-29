@@ -55,11 +55,13 @@
     padding: 0;
     margin-bottom: 20px;
     color: var(--color-primary);
+    
 }
 
 .error{
     font-size: var(--font-size-small);
-    color: rgb(224, 52, 52);
+    color: rgb(231, 159, 159);
+    text-align: center;
 }
 
 .success{
