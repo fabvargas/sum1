@@ -23,6 +23,31 @@ const emailFormat = (value) => {
     return value.includes('@') && value.includes('.') && value.indexOf('@') < value.indexOf('.') && value.length > 5;
 }
 
+const passWithUppercase = (value) => {
+    return value != value.toLowerCase();
+}
+
+const passWithSpecialChar = (value) => {
+    const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ',', '.', '?', ':', '"', '{', '}', '|', '<', '>'];
+    for (let i = 0; i < value.length; i++) {
+        if (specialChars.includes(value.charAt(i))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+const passWithNumber = (value) => {
+    for (let i = 0; i < value.length; i++) {
+        if (!isNaN(value[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
 const passLength = (value) => {
     return value.length >= 6 && value.length < 30;
 }
@@ -57,7 +82,26 @@ emailInput.addEventListener('focusout', () => {
 });
 
 passInput.addEventListener('focusout', () => {
-    passLength(passInput.value) ? passError= "" : passError.textContent = 'La contraseña debe tener entre 6 y 30 caracteres';
+   
+    if (!passLength(passInput.value)) {
+        passError.textContent = 'La contraseña debe tener entre 6 y 30 caracteres';
+    }
+   
+    else if (!passWithUppercase(passInput.value)) {
+        passError.textContent = 'La contraseña debe tener al menos una mayúscula';
+    }
+  
+    else if (!passWithNumber(passInput.value)) {
+        passError.textContent = 'La contraseña debe tener al menos un número';
+    }
+   
+    else if (!passWithSpecialChar(passInput.value)) {
+        passError.textContent = 'La contraseña debe tener al menos un carácter especial';
+    }
+   
+    else {
+        passError.textContent = ''; 
+    }
     
 });
 

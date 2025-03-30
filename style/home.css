@@ -198,14 +198,10 @@ padding-top: 60px;
 /* Grid */
 
 
-/* .games-grid {
-    padding: 20px;
-} */
 
 .games-list {
     box-sizing: border-box;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+
     width: 100%;
     list-style: none;
     padding: 0;
@@ -481,21 +477,99 @@ p {
 
 .car-form{
     background-color: var(--color-primary);
-     max-height: 300px;
+     max-height: 400px;
      max-width: 500px;
     margin: 20px auto;
     
 }
 
-.form-btn{
-    background-color: var(--color-black);
+.cart-btn-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--color-gray);
+    border-radius: 5px;
+}
+
+.cart-btn{
+    background-color: var(--color-primary);
     color: var(--color-white);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-    margin-left: auto;
+    font-size: 15px;
+   
+}
+
+.cart-btn:hover{
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+.cart-span{
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+
+/* ABOUT */
+
+.span-yellow{
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.message-container{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:var(--color-primary);
+    margin-bottom: 50px;
+    
+}
+
+.message-container h2{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+
+
+.input-message{
+   
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.message-btn{
+    background-color: var(--color-black);
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
     font-size: 15px;
     font-weight: 900;
 }
+
+.message-btn:hover{
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+

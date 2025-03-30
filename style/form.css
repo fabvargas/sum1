@@ -12,6 +12,9 @@
 .form-box{
     z-index: var(--z-index-2);
     position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     display: flex;
     gap: 5px;
     flex-direction: column;
@@ -22,6 +25,7 @@
     min-width: 300px;
     padding: 35px 20px;
     border-radius: 10px;
+    text-align: center;
 
 }
 
