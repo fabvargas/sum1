@@ -365,7 +365,101 @@ padding-top: 60px;
 }
 
 
-/* car */
+/* FORO */
+
+.foro-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background-color: var(--color-primary);
+}
+
+.foro-container h2{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-black);
+}
+.foro-container p{
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--color-black);
+}
+
+.foro-container form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.foro-container form textarea{
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.foro-container button{
+    background-color: var(--color-black);
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 900;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.foro-container button:hover{
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-gray);
+}
+
+.comments h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.comment{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1c1c1c;
+    padding: 10px;
+    background-color: var(--color-primary);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.comment:hover{
+   scale: 1.02;
+    transition: 0.3s;
+}
+
+.comment strong{
+    font-size: 1.2rem;
+    color: var(--color-black);
+}
+
+
+
+/* cart */
 
 .car-container {
     display: flex;
