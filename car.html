@@ -68,10 +68,12 @@
             <form class= "col-12 col-md-12 col-lg-5 p-5 car-form ">
                 <h3 class="car-title">Datos de envio</h3>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="game-name" placeholder="Direccion">
+                    <input type="text" class="form-control" id="direction-cart" placeholder="Direccion">
+                    <p class="error" id="error-direc"></p>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="game-image" placeholder="Telefono">
+                    <input type="text" class="form-control" id="tel-cart" placeholder="Telefono">
+                    <p class="error" id="error-tel"></p>
                 </div>
 
                 <div class="cart-btn-container">
@@ -79,7 +81,7 @@
                     <span class="cart-span ">$33.880</span>
                 </div>
                 
-
+                <p id="success-message" class="success-message"></p>
 
             </form>
            
@@ -90,4 +92,5 @@
 
 
 </body>
+<script src="js/cart.js"></script>
 </html>
