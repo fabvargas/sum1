@@ -12,7 +12,7 @@ const userLength =(value)=>{
 }
 
 const passLength =(value)=>{
-  return value.length > 6 && value.length < 30
+  return value.length >= 6 && value.length < 30
 }
 
 
