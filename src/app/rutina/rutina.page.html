@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rutina de Ejercicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding " >
+  <!-- Card con datos de la rutina -->
+  <ion-card *ngIf="rutinaCompleta" class="primary-color">
+    <ion-card-header>
+      <ion-card-title>{{ rutinaCompleta.nombre }}</ion-card-title>
+      <ion-card-subtitle class="primary-color">Nivel: {{ rutinaCompleta.nivel }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ rutinaCompleta.descripcion }}</p>
+      <p>
+        <strong>Repeticiones del circuito:</strong> {{ rutinaCompleta.repeticiones_circuito }}<br />
+        <strong>Descanso entre circuitos:</strong> {{ rutinaCompleta.descanso_entre_circuitos_segundos }} segundos
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de ejercicios -->
+  <ion-list *ngIf="ejercicios?.length" class="margin">
+    <ion-item *ngFor="let ejercicio of ejercicios">
+      <ion-thumbnail slot="start">
+        <img [src]="ejercicio.imagen" alt="{{ ejercicio.nombre }}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ ejercicio.nombre }}</h2>
+        <p>{{ ejercicio.descripcion }}</p>
+        <p><strong>Duración:</strong> {{ ejercicio.duracion_segundos }}s <br>
+           <strong>Descanso:</strong> {{ ejercicio.descanso_segundos }}s</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

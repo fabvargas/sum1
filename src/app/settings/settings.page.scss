@@ -1,0 +1,23 @@
+.margin{
+    margin: 20px 0;
+}
+
+.margin-bottom{
+    margin-bottom: 40px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+  
+}
+
+.background{
+      background-color: rgb(0, 0, 0, 0.5);
+}
+
+ion-content {
+   --background: url('/assets/home.jpg') no-repeat center center / cover;
+}

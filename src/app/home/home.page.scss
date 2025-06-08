@@ -25,3 +25,24 @@
 #container a {
   text-decoration: none;
 }
+
+ion-card-title {
+  font-weight: bold;
+}
+
+mat-progress-bar {
+  margin-top: 10px;
+}
+
+ion-grid{
+  
+  ion-card{
+    height: 80px;
+  }
+}
+
+
+.primary-color {
+  background-color: #5c4168;
+  color: #fff;
+}

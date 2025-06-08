@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding "  >
+ 
+  <form class="login-form" >
+    <div class= "title-warp">
+    <h1>GymAPP</h1>
+    <p>Sigue tus metas. Entrena con nosotros</p>
+
+    </div>
+    
+ 
+<ion-item>
+  <ion-label position="floating">Correo</ion-label>
+  <ion-input
+    type="email"
+    [(ngModel)]="email"
+    name="password"
+    required
+  ></ion-input>
+</ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      ></ion-input>
+    </ion-item>
+
+
+  <ion-button
+    expand="block"
+    type="submit"
+    class="ion-margin-top ring-bounce"
+    (click)="onLogin()"
+  >
+    Iniciar sesión
+  </ion-button>
+
+
+    <div class="footer-login">
+    <p >¿No tienes cuenta? <a style="color:#b4c4f6"  (click)="irARegistro()">Regístrate</a></p>
+   
+  </div>
+
+  </form>
+
+  
+
+</ion-content>

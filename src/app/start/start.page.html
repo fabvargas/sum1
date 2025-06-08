@@ -1,0 +1,38 @@
+<ion-card class="exercise-card" *ngIf="ejercicioActual">
+  <ion-button class="finish-button" expand="block" color="danger" routerLink="/user/home">
+    Salir <ion-icon name="close" slot="end"></ion-icon>
+  </ion-button>
+
+  <img [src]="ejercicioActual.imagen" alt="Ejercicio" />
+
+  <ion-card-content>
+    <h2>{{ ejercicioActual.nombre }}</h2>
+    <p>{{ ejercicioActual.descripcion }}</p>
+    <p>
+      <strong>Duración:</strong> {{ ejercicioActual.duracion_segundos }}s |
+      <strong>Descanso:</strong> {{ ejercicioActual.descanso_segundos }}s
+    </p>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="6">
+          <ion-button expand="block" color="medium" (click)="anteriorEjercicio()" [disabled]="actualEjercicioIndex === 0">
+            <ion-icon name="arrow-back" slot="start"></ion-icon>
+            Anterior
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button *ngIf="!terminarRutina()" expand="block" color="primary" (click)="siguienteEjercicio()">
+            Siguiente
+            <ion-icon name="arrow-forward" slot="end"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="terminarRutina()" expand="block" color="success" (click)="onEndRutina()">
+            Terminar
+            <ion-icon name="checkmark" slot="end"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

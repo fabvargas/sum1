@@ -1,0 +1,68 @@
+<ion-content class="ion-padding">
+
+  <!-- Encabezado con botón de regreso -->
+  <div class="title margin ion-align-items-center ion-justify-content-between ion-padding-start">
+    <ion-icon name="arrow-back-outline" routerLink="/user/home" slot="start" style="cursor: pointer; font-size: 24px;"></ion-icon>
+    <ion-title>Ajustes</ion-title>
+  </div>
+
+  <!-- Tarjeta de Perfil -->
+  <ion-card class="margin-bottom background">
+    <ion-card-header>
+      <ion-card-title>Perfil</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input [(ngModel)]="correo" type="email" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dificultad</ion-label>
+        <ion-select [(ngModel)]="dificultad" interface="popover">
+          <ion-select-option value="Easy">Fácil</ion-select-option>
+          <ion-select-option value="Medium">Media</ion-select-option>
+          <ion-select-option value="Hard">Difícil</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" color="primary" (click)="guardarPerfil()">
+        Guardar cambios
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjeta para cambiar contraseña -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cambiar Contraseña</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Contraseña actual</ion-label>
+        <ion-input [(ngModel)]="contrasenaActual" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nueva contraseña</ion-label>
+        <ion-input [(ngModel)]="nuevaContrasena" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmar contraseña</ion-label>
+        <ion-input [(ngModel)]="confirmarContrasena" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="secondary" (click)="guardarContrasena()">
+        Guardar contraseña
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

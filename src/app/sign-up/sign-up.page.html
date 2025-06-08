@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ">
+  <form class="login-form"  >
+    <div class= "title-warp">
+    <h1>GymAPP</h1>
+    </div>
+
+
+  <ion-item>
+  <ion-label position="floating">Nombre</ion-label>
+  <ion-input type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Correo electrónico</ion-label>
+  <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Contraseña</ion-label>
+  <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Repite tu Contraseña</ion-label>
+  <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required></ion-input>
+</ion-item>
+    
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Fecha de nacimiento</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [(ngModel)]="fechaNacimiento"
+    name="fechaNacimiento"
+    required
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+   
+    <ion-button
+      expand="block"
+      type="submit"
+      class="ion-margin-top"
+      (click)="onSubmit()"
+    >
+      Registrar
+    </ion-button>
+
+      <div class="footer-login">
+    <p> Ya tienes cuenta <a style="color:#b4c4f6"  routerLink="/login">Inicia sesión</a></p>
+  </div>
+
+  </form>
+
+
+</ion-content>

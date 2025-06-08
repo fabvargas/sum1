@@ -34,4 +34,49 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.always.css";
+
+@import "@angular/material/prebuilt-themes/purple-green.css";
+
+
+
+
+:root {
+  --ion-color-primary: #4d2b5c;
+  --ion-color-primary-rgb: 123, 31, 162;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #6c1c90;
+  --ion-color-primary-tint: #8c36ab;
+
+  
+}
+
+ion-item.active {
+  --background: #4d2b5c; 
+  font-weight: bold;
+  
+}
+
+.ring-bounce{
+  
+  background-color: var(--ion-color-primary);
+  animation: ring-bounce-animation 1.5s infinite ease-in-out;
+  ;
+}
+
+@keyframes ring-bounce-animation {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  
+}
