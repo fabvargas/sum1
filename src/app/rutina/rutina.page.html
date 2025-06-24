@@ -21,18 +21,61 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Lista de ejercicios -->
-  <ion-list *ngIf="ejercicios?.length" class="margin">
-    <ion-item *ngFor="let ejercicio of ejercicios">
-      <ion-thumbnail slot="start">
-        <img [src]="ejercicio.imagen" alt="{{ ejercicio.nombre }}" />
-      </ion-thumbnail>
+ <!-- Lista completa en un único drop-down -->
+<ion-accordion-group>
+  <ion-accordion value="ejercicios">
+    <ion-item slot="header" color="light">
       <ion-label>
-        <h2>{{ ejercicio.nombre }}</h2>
-        <p>{{ ejercicio.descripcion }}</p>
-        <p><strong>Duración:</strong> {{ ejercicio.duracion_segundos }}s <br>
-           <strong>Descanso:</strong> {{ ejercicio.descanso_segundos }}s</p>
+        <h2>Ver Ejercicios</h2>
       </ion-label>
     </ion-item>
-  </ion-list>
+
+    <div class="ion-padding" slot="content">
+      <ion-list *ngIf="ejercicios?.length">
+        <ion-item *ngFor="let ejercicio of ejercicios">
+          <ion-thumbnail slot="start">
+            <img [src]="ejercicio.imagen" alt="{{ ejercicio.nombre }}" />
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{ ejercicio.nombre }}</h3>
+            <p>{{ ejercicio.descripcion }}</p>
+            <p>
+              <strong>Duración:</strong> {{ ejercicio.duracion_segundos }}s<br>
+              <strong>Descanso:</strong> {{ ejercicio.descanso_segundos }}s
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
+
+<!--Lista de comentarios -->
+<ion-card >
+    <ion-card-header>
+      <ion-card-title>Agregar Comentario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="agregarComentario()">
+        <ion-item>
+          <ion-label position="stacked">Comentario</ion-label>
+          <ion-textarea [(ngModel)]="nuevoComentario.texto" name="texto" required></ion-textarea>
+        </ion-item>
+        <ion-button expand="block" type="submit">Enviar</ion-button>
+      </form>
+    </ion-card-content>
+    
+  </ion-card>
+  <ion-list *ngIf="comments?.length" class="margin">
+        <ion-item *ngFor="let comment of comments">
+          <ion-label>
+            <h3>{{ comment.email }}</h3>
+            <p>{{ comment.body }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+
 </ion-content>
+
+
