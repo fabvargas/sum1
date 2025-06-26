@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import { Platform, ToastController, AlertController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

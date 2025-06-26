@@ -5,7 +5,7 @@ import type { User, UserRegister } from "./type"
 import { DbServiceService } from './db-service.service'; 
 import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { RutinaLvl } from './gym-mode.service';
-import { AlertController } from '@ionic/angular';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UserService {
   constructor(
     private dbService:DbServiceService,
     private toastController: ToastController,
-      private alertController: AlertController,
+   
   ) {
      this.dbService.dbState().subscribe((ready) => {
       if (ready) {
@@ -38,15 +38,6 @@ export class UserService {
     await toast.present();
   }
 
-  async presentAlert( message: string) {
-  const alert = await this.alertController.create({
-    header: "error",
-    message: message,
-    buttons: ['OK'],
-  });
-
-  await alert.present();
-}
 
      private guardarSesionEnLocalStorage(user: any) {
     localStorage.setItem('user_session', JSON.stringify({
@@ -90,7 +81,7 @@ async logout() {
       this.presentToast("Usuario agregado correctamente");
       return res.insertId;
     } catch (e) {
-     this.presentAlert("Error al agregar usuario: " + JSON.stringify(e));
+     this.presentToast("Error al agregar usuario: " + JSON.stringify(e));
       return null;
     }
   }
