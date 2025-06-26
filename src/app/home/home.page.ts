@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Camera,CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,11 @@ export class HomePage implements OnInit {
   diasEntrenados = 7;
   ejerciciosCompletados = 43;
 
-  constructor() {}
+    imageSource: any
+
+  constructor() {
+    this.imageSource="https://github.com/shadcn.png"
+  }
 
   ngOnInit() {}
 
@@ -40,5 +45,17 @@ export class HomePage implements OnInit {
         return 'primary';
     }
   }
+
+  async takePicture(){
+    const image = await Camera.getPhoto({
+      quality:90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl
+    })
+
+   this.imageSource=image.dataUrl
+
+  }
+
 
 }

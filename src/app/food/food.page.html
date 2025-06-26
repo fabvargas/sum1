@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Botón atrás solo si hay detalle abierto -->
+    <ion-buttons slot="start" *ngIf="selectedFood">
+   <ion-button expand="block" color="medium" (click)="cerrarDetalle()">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+   </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ selectedFood ? selectedFood.strMeal : 'Comidas' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <!-- Lista de comidas -->
+  <ion-list *ngIf="!selectedFood" style="margin-bottom: 100px;">
+    <ion-item *ngFor="let food of foodList" (click)="verDetalle(food.idMeal)">
+      <ion-avatar slot="start">
+        <img [src]="food.strMealThumb" alt="imagen">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ food.strMeal }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Detalle de la comida -->
+  <ion-card *ngIf="selectedFood" style="margin-bottom: 100px;">
+    <img [src]="selectedFood.strMealThumb" />
+    <ion-card-header>
+      <ion-card-title>{{ selectedFood.strMeal }}</ion-card-title>
+      <ion-card-subtitle>{{ selectedFood.strArea }} - {{ selectedFood.strCategory }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Instrucciones:</strong></p>
+      <p>{{ selectedFood.strInstructions }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

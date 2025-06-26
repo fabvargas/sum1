@@ -41,13 +41,16 @@ export class LoginPage {
     return password.length >= 4 && password.length <= 8;
   }
 
-  onLogin() {
-    if (this.validateEmail(this.email) && this.validatePassword(this.password)) {
-      this.userService.validateLogin(this.email,this.password)
-    }else{
-      this.showAlert('Por favor, ingrese un correo electrónico y una contraseña válidos.');
-    }
+ async onLogin() {
+  if (this.validateEmail(this.email) && this.validatePassword(this.password)) {
+    const success = await this.userService.validateLogin(this.email, this.password);
+    if (success) {
+      this.router.navigate(['/user/home']);
+    } 
+  } else {
+    this.showAlert('Por favor, ingrese un correo electrónico y una contraseña válidos.');
   }
+}
 
 
   async getDbInfo(){

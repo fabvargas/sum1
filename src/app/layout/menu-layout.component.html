@@ -36,6 +36,13 @@
 </ion-item>
 
 <ion-item 
+  routerLink="/user/food" 
+  (click)="toggleMenu()" 
+  [class.active]="isActive('/user/food')">
+  <ion-icon name="fast-food-outline"></ion-icon> Food
+</ion-item>
+
+<ion-item 
   routerLink="/login" 
   (click)="toggleMenu()" 
   [class.active]="isActive('/login')">

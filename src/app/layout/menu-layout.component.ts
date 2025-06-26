@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu-layout',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class MenuLayoutComponent {
-    constructor(private menu: MenuController,private router : Router) {}
+    constructor(
+      private menu: MenuController,
+      private router : Router,
+      private userService:UserService
+    ) {}
 
       isActive(route: string): boolean {
     return this.router.url === route;
@@ -20,6 +25,11 @@ export class MenuLayoutComponent {
     if (menu) {
       (menu as HTMLIonMenuElement).close();
     }
+  }
+
+  logOut(){
+    this.userService.logout()
+    this.toggleMenu()
   }
     
 }

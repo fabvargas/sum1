@@ -146,6 +146,8 @@ async logout() {
   }
  
 
-
+  isLoggedIn(): boolean {
+  return this.getSesionDesdeLocalStorage() !== null;
+}
 
 }

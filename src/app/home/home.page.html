@@ -6,8 +6,11 @@
  <ion-card>
   <ion-card-header>
 <ion-item lines="none">
-  <ion-avatar slot="start">
-    <img src="https://github.com/shadcn.png" alt="Avatar">
+  <ion-avatar slot="start" style="position: relative;">
+     <img *ngIf="imageSource" src="{{imageSource}}" />
+ <ion-button class="button-avatar" size="small">
+  <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+</ion-button>
   </ion-avatar>
   <ion-label>
     <h2>{{ nombreUsuario }}</h2>
@@ -34,28 +37,6 @@
   <ion-note slot="end">{{ ultimaRutina | date: 'short' }}</ion-note>
 </ion-item>
 
-<ion-grid>
-  <ion-row>
-    <ion-col>
-      <ion-card color="light">
-        <ion-card-header class="primary-color">
-          <ion-card-subtitle>Días entrenados</ion-card-subtitle>
-          <ion-card-title>{{diasEntrenados}}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card color="light">
-        <ion-card-header class="primary-color">
-          <ion-card-subtitle>Ejercicios totales</ion-card-subtitle>
-          <ion-card-title>{{ejerciciosCompletados}}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
-
  <ion-button class="ring-bounce" expand="block"  routerLink="/user/start">
       Comenzar Rutina  
   </ion-button>
@@ -65,8 +46,6 @@
 
   </ion-card-content>
 </ion-card>
-
-
 
   <ion-card>
     <ion-card-header>
@@ -82,5 +61,32 @@
       <p>{{ progreso }}% completado</p>
     </ion-card-content>
   </ion-card>
+
+
+<ion-grid>
+  <ion-row>
+    <!-- Tarjeta: Días entrenados -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header >
+          <ion-icon name="calendar-outline" size="large" color="primary"></ion-icon>
+          <ion-card-subtitle>Días entrenados</ion-card-subtitle>
+          <ion-card-title>{{ diasEntrenados }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+    <!-- Tarjeta: Ejercicios completados -->
+    <ion-col>
+      <ion-card color="light">
+        <ion-card-header >
+          <ion-icon name="barbell-outline" size="large" color="secondary"></ion-icon>
+          <ion-card-subtitle>Ejercicios totales</ion-card-subtitle>
+          <ion-card-title>{{ ejerciciosCompletados }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 </ion-content>

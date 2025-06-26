@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MenuLayoutComponent } from './layout/menu-layout.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -21,11 +22,17 @@ const routes: Routes = [
   {
     path: 'user',
     component: MenuLayoutComponent,
+  //     canActivate: [AuthGuard],
+  // canActivateChild: [AuthGuard],
     children: [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
+        {
+    path: 'food',
+    loadChildren: () => import('./food/food.module').then( m => m.FoodPageModule)
+  },
       {
         path: 'rutina',
         loadChildren: () => import('./rutina/rutina.module').then(m => m.RutinaPageModule)
@@ -44,9 +51,8 @@ const routes: Routes = [
       }
     ]
   },
+
  
-  
-  
 ];
 
 
