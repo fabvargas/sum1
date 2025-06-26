@@ -18,9 +18,11 @@ export class StartPage implements OnInit {
     this.cargarRutina();
   }
 
-  cargarRutina() {
-    this.ejercicios = this.rutina.obtenerRutina().ejercicios;
-  }
+cargarRutina() {
+  const rutina = this.rutina.obtenerRutina();
+  this.ejercicios = rutina?.ejercicios ?? [];
+}
+
 
   get ejercicioActual(): Ejercicio | undefined {
     return this.ejercicios?.[this.actualEjercicioIndex];

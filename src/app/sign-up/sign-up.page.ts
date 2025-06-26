@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { UserService } from '../services/user.service';
+import { RutinaLvl } from '../services/gym-mode.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,10 +17,12 @@ export class SignUpPage {
   password = '';
   confirmPassword = '';
   fechaNacimiento = '';
+  nivel=" ";
 
   constructor(
     private router: Router,
-     private alertController: AlertController
+     private alertController: AlertController,
+     private userService: UserService
     ) { 
    
     
@@ -55,9 +59,15 @@ export class SignUpPage {
     await alert.present();
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.validateForm()) {
-      this.showAlert('Registro enviado correctamente.', 'Éxito');
+      await this.userService.registerUser({
+        email : this.email,
+        name: this.nombre,
+        password: this.password,
+        birthdate: this.fechaNacimiento,
+        nivel:this.nivel as RutinaLvl
+      })
 
     } else {
       let errorMessage = 'Por favor, corrige los siguientes errores:\n';

@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuLayoutComponent } from './layout/menu-layout.component'; 
 
 import { HttpClientModule } from '@angular/common/http';
+import {SQLite} from "@awesome-cordova-plugins/sqlite/ngx"
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

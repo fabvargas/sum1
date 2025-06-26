@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { DbServiceService } from '../services/db-service.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -13,17 +15,21 @@ export class LoginPage {
   email = '';
   password = '';
 
-  constructor(private router: Router) {
-   
-  }
+  constructor(
+    private router: Router,
+    private alertController:AlertController,
+      private dbcontext:DbServiceService,
+      private userService : UserService
+  ) { }
 
-  showAlert(message: string) {
-    const alert = document.createElement('ion-alert');
-    alert.header = 'Alerta';
-    alert.message = message;
-    alert.buttons = ['OK'];
-    document.body.appendChild(alert);
-    return alert.present();
+    async showAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   validateEmail(email: string): boolean {
@@ -36,16 +42,22 @@ export class LoginPage {
   }
 
   onLogin() {
-    console.log(this.email, this.password);
     if (this.validateEmail(this.email) && this.validatePassword(this.password)) {
-      this.router.navigate(['/user/home']);
+      this.userService.validateLogin(this.email,this.password)
     }else{
       this.showAlert('Por favor, ingrese un correo electrónico y una contraseña válidos.');
     }
   }
 
-  irARegistro() {
-  (document.activeElement as HTMLElement)?.blur(); 
-  this.router.navigate(['/sign-up']);
-}
+
+  async getDbInfo(){
+   await this.dbcontext.mostrarInfoTablas()
+  }
+
+   async ReicinicarDb(){
+  await this.dbcontext.limpiarTablas()  
+  await this.dbcontext.agregarInicialData()
+ }
+
+
 }

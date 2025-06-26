@@ -5,6 +5,25 @@
 </ion-header>
 
 <ion-content class="ion-padding "  >
+
+ <ion-button
+    expand="block"
+    type="submit"
+    class="ion-margin-top"
+    (click)="ReicinicarDb()"
+  >
+    Reiniciar Db
+  </ion-button>
+
+  <ion-button
+    expand="block"
+    type="submit"
+    class="ion-margin-top "
+    (click)="getDbInfo()"
+  >
+    Mostrar Db
+  </ion-button>
+
  
   <form class="login-form" >
     <div class= "title-warp">
@@ -46,7 +65,7 @@
 
 
     <div class="footer-login">
-    <p >¿No tienes cuenta? <a style="color:#b4c4f6"  (click)="irARegistro()">Regístrate</a></p>
+    <p >¿No tienes cuenta? <a style="color:#b4c4f6" routerLink="/sign-up">Regístrate</a></p>
    
   </div>
 

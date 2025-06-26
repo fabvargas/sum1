@@ -34,10 +34,9 @@ export class RutinaPage implements OnInit {
   }
 
   cargarRutina() {
-    this.rutinaCompleta = this.rutina.obtenerRutina();
-    this.ejercicios = this.rutinaCompleta.ejercicios;
-  }
-
+  this.rutinaCompleta = this.rutina.obtenerRutina();
+  this.ejercicios = this.rutinaCompleta?.ejercicios ?? [];
+}
   agregarComentario(){
 
   }
