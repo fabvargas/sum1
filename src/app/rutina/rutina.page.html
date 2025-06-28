@@ -22,7 +22,7 @@
   </ion-card>
 
 
-<ion-list *ngIf="ejercicios?.length">
+<ion-list *ngIf="ejercicios?.length" style="margin-bottom: 100px;">
   <ion-item *ngFor="let ejercicio of ejercicios">
     <ion-thumbnail slot="start">
       <img [src]="ejercicio.imagen" alt="{{ ejercicio.nombre }}" />

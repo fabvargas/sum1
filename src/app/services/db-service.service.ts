@@ -128,11 +128,11 @@ private async crearTablas() {
 
 async limpiarTablas() {
   try {
-    // Eliminar datos de perfil primero (por dependencia con users)
+   
     await this.db.executeSql('DELETE FROM perfil;', []);
     await this.db.executeSql("DELETE FROM sqlite_sequence WHERE name='perfil';", []);
 
-    // Luego eliminar datos de users
+ 
     await this.db.executeSql('DELETE FROM users;', []);
     await this.db.executeSql("DELETE FROM sqlite_sequence WHERE name='users';", []);
 
