@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+import { Subscription } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 
 export interface Ejercicio {
@@ -137,16 +139,36 @@ export class GymModeService {
 }
 ]
  
+    private userSub!: Subscription;
+   userNivel: RutinaLvl | null = null;
 
   constructor(
-    private userService:UserService
-  ) { }
+    private userService:UserService,
+    private toastController: ToastController
+  ) { 
+    this.userSub = this.userService.user.subscribe(user => {
+  if (user && user.nivel) {
+    this.userNivel = user.nivel;
+  }
 
- 
+    });
+  }
 
-obtenerRutina(): RutinaGimnasio | undefined {
-  return this.rutinas.find(r => r.nivel === this.userService.getUserLvl());
+ async presentToast(mensaje: string) {
+  const toast = await this.toastController.create({
+    message: mensaje,
+    duration: 2000, 
+    position: 'bottom', 
+    color: 'primary',   
+    icon: 'checkmark-circle-outline' 
+  });
+
+  await toast.present();
 }
 
+
+async obtenerRutina(): Promise<RutinaGimnasio | undefined> {
+  return this.rutinas.find(r => r.nivel === this.userNivel);
+}
 
 }

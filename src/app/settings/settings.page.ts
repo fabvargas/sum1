@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { RutinaLvl } from '../services/gym-mode.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -8,11 +11,37 @@ import { Component } from '@angular/core';
 })
 export class SettingsPage {
   nombre: string = '';
-  correo: string = '';
-  dificultad: string = 'Easy';
+  dificultad: RutinaLvl = RutinaLvl.EASY;
   nuevaContrasena: string = '';
   confirmarContrasena: string = '';
   contrasenaActual: string = '';
+  userId=0
+
+  userOriginalName: string = ''; 
+userOriginalNivel: string = ''; 
+
+private userSub!: Subscription;
+
+  constructor(
+    private userService : UserService
+    
+  ){
+
+  }
+
+ngOnInit() {
+  this.userSub = this.userService.user.subscribe(user => {
+    if (user) {
+      this.nombre = user.name;
+      this.dificultad = user.nivel;
+      this.userId = user.id;
+
+      this.userOriginalName = this.nombre;
+      this.userOriginalNivel = this.dificultad;
+    }
+  });
+}
+
 
   // Muestra alertas reutilizables como en LoginPage
   async showAlert(message: string) {
@@ -22,12 +51,6 @@ export class SettingsPage {
     alert.buttons = ['OK'];
     document.body.appendChild(alert);
     await alert.present();
-  }
-
-  // Valida el correo electrónico
-  validateEmail(email: string): boolean {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailPattern.test(email);
   }
 
   // Valida que el nombre tenga al menos 2 caracteres
@@ -40,48 +63,73 @@ export class SettingsPage {
     return password.length >= 6;
   }
 
-  guardarPerfil() {
-    if (!this.validateNombre(this.nombre)) {
-      this.showAlert('El nombre debe tener al menos 2 caracteres.');
-      return;
-    }
-
-    if (!this.validateEmail(this.correo)) {
-      this.showAlert('Por favor, ingresa un correo electrónico válido.');
-      return;
-    }
-
-    if (!this.dificultad) {
-      this.showAlert('Selecciona una dificultad.');
-      return;
-    }
-
-    console.log('Perfil actualizado:', {
-      nombre: this.nombre,
-      correo: this.correo,
-      dificultad: this.dificultad,
-    });
-
-    this.showAlert('Datos personales actualizados.');
+async guardarPerfil() {
+  // Validaciones
+  if (!this.validateNombre(this.nombre)) {
+    this.showAlert('El nombre debe tener al menos 2 caracteres.');
+    return;
   }
 
-  guardarContrasena() {
-    if (!this.contrasenaActual) {
-      this.showAlert('Debes ingresar la contraseña actual.');
-      return;
-    }
-
-    if (!this.validatePassword(this.nuevaContrasena)) {
-      this.showAlert('La nueva contraseña debe tener al menos 6 caracteres.');
-      return;
-    }
-
-    if (this.nuevaContrasena !== this.confirmarContrasena) {
-      this.showAlert('Las contraseñas no coinciden.');
-      return;
-    }
-
-    console.log('Contraseña actualizada:', this.nuevaContrasena);
-    this.showAlert('Contraseña cambiada correctamente.');
+  if (!this.dificultad) {
+    this.showAlert('Selecciona una dificultad.');
+    return;
   }
+
+  const nombreCambio = this.nombre !== this.userOriginalName;
+  const nivelCambio = this.dificultad !== this.userOriginalNivel;
+
+  if (!nombreCambio && !nivelCambio) {
+    return;
+  }
+
+  try {
+   
+
+    if (nombreCambio) {
+      await this.userService.updateUserName(this.userId, this.nombre);
+    }
+
+    if (nivelCambio) {
+      await this.userService.updateUserNivel(this.userId, this.dificultad);
+    }
+
+
+  } catch (e) {
+    this.showAlert('Error al actualizar el perfil: ' + JSON.stringify(e));
+  }
+}
+
+
+ async guardarContrasena() {
+  if (!this.contrasenaActual || !this.nuevaContrasena || !this.confirmarContrasena) {
+    this.showAlert('Por favor, completa todos los campos.');
+    return;
+  }
+
+  if (this.nuevaContrasena !== this.confirmarContrasena) {
+    this.showAlert('La nueva contraseña y la confirmación no coinciden.');
+    return;
+  }
+
+  try {
+    const user = await this.userService.userSubject.value;
+
+    if (!user) {
+      this.showAlert('Usuario no autenticado.');
+      return;
+    }
+
+    const validLogin = await this.userService.validateLogin(user.email, this.contrasenaActual);
+    if (!validLogin) {
+      this.showAlert('La contraseña actual es incorrecta.');
+      return;
+    }
+
+    await this.userService.updateUserPassword(user.id, this.nuevaContrasena);
+
+  } catch (e) {
+    this.showAlert('Error al actualizar contraseña: ' + JSON.stringify(e));
+  }
+}
+
 }

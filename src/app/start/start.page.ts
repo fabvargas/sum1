@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GymModeService, Ejercicio } from '../services/gym-mode.service';
 import { Router } from '@angular/router';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-start',
@@ -12,15 +13,23 @@ export class StartPage implements OnInit {
   ejercicios?: Ejercicio[];
   actualEjercicioIndex: number = 0;
 
-  constructor(private rutina: GymModeService, private router: Router) {}
+  constructor(
+    private rutina: GymModeService,
+     private router: Router,
+    private perfilService: ProfileService
+    ) {}
 
   ngOnInit() {
     this.cargarRutina();
   }
 
-cargarRutina() {
-  const rutina = this.rutina.obtenerRutina();
-  this.ejercicios = rutina?.ejercicios ?? [];
+async cargarRutina() {
+  const rutina = await this.rutina.obtenerRutina();
+  if (rutina) {
+    this.ejercicios = rutina.ejercicios;
+  } else {
+    this.ejercicios = []
+  }
 }
 
 
@@ -45,7 +54,12 @@ cargarRutina() {
   }
 
   onEndRutina() {
-    // Redirige al home u otra página de resultados
+    this.updatePerfil()
     this.router.navigate(['/user/home']);
   }
+
+  updatePerfil(){
+     this.perfilService.updateProgresoRutinaCompleto(this.ejercicios?.length ?? 0)
+  }
+
 }

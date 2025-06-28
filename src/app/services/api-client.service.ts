@@ -7,7 +7,7 @@ import { Observable, retry } from 'rxjs';
 })
 export class ApiClientService {
  
-  apiCommentsURL = "https://jsonplaceholder.typicode.com/comments?postId=1"
+  
   apiFoodListUrl="https://www.themealdb.com/api/json/v1/1/filter.php?i=Beef"
 
   apiFoodUrl="https://www.themealdb.com/api/json/v1/1/lookup.php?i="
@@ -15,11 +15,6 @@ export class ApiClientService {
   comments:any[]=[]
   constructor(private http:HttpClient) {}
 
-  getComments():Observable<any>{
-    return this.http.get(this.apiCommentsURL).pipe(
-      retry(2),
-    )
-  }
 
   getFoodList():Observable<any>{
     return this.http.get(this.apiFoodListUrl).pipe(

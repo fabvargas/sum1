@@ -8,7 +8,7 @@
 <ion-item lines="none">
   <ion-avatar slot="start" style="position: relative;">
      <img *ngIf="imageSource" src="{{imageSource}}" />
- <ion-button class="button-avatar" size="small">
+ <ion-button class="button-avatar" (click)="takePicture()" size="small">
   <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
 </ion-button>
   </ion-avatar>
