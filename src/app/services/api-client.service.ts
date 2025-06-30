@@ -9,7 +9,6 @@ export class ApiClientService {
  
   
   apiFoodListUrl="https://www.themealdb.com/api/json/v1/1/filter.php?i=Beef"
-
   apiFoodUrl="https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 
   comments:any[]=[]
